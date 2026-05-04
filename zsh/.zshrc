@@ -1,3 +1,10 @@
+# prompt: ben ~/dev/dots (main) %
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' (%F{blue}%b%f)'
+setopt PROMPT_SUBST
+PROMPT='%F{green}%n%f %F{yellow}%~%f${vcs_info_msg_0_} %# '
+
 # misc
 alias ll='ls -la'
 alias la='ls -A'
