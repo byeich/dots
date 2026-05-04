@@ -1,3 +1,11 @@
+# completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # case-insensitive
+command -v kubectl &>/dev/null && source <(kubectl completion zsh)
+command -v helm    &>/dev/null && source <(helm completion zsh)
+command -v tofu    &>/dev/null && source <(tofu completion zsh)
+
 # prompt: ben ~/dev/dots (main) %
 autoload -Uz vcs_info
 precmd() { vcs_info }
