@@ -13,6 +13,7 @@ symlink() {
 echo "Installing dotfiles from $DOTS_DIR"
 
 symlink "$DOTS_DIR/zsh/.zshrc"     "$HOME/.zshrc"
+symlink "$DOTS_DIR/bash/.bashrc"   "$HOME/.bashrc"
 symlink "$DOTS_DIR/git/.gitconfig" "$HOME/.gitconfig"
 
-echo "Done. Reload shell: source ~/.zshrc"
+echo "Done. Reload shell: source ~/.zshrc  (or ~/.bashrc on Linux)"

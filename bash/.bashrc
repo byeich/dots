@@ -1,17 +1,24 @@
 # completion
-autoload -Uz compinit && compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # case-insensitive
-command -v kubectl &>/dev/null && source <(kubectl completion zsh)
-command -v helm    &>/dev/null && source <(helm completion zsh)
+[ -f /etc/bash_completion ] && source /etc/bash_completion
+command -v kubectl &>/dev/null && source <(kubectl completion bash)
+command -v helm    &>/dev/null && source <(helm completion bash)
 
 
-# prompt: ben ~/dev/dots (main) %
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' (%F{blue}%b%f)'
-setopt PROMPT_SUBST
-PROMPT='%F{green}%n%f %F{yellow}%~%f${vcs_info_msg_0_} %# '
+# prompt: ben ~/dev/dots (main) $
+# $'\001'/'\002' are the bash-safe equivalents of \[ and \] inside variables
+_update_ps1() {
+  local RESET=$'\001\033[0m\002'
+  local GREEN=$'\001\033[0;32m\002'
+  local YELLOW=$'\001\033[0;33m\002'
+  local BLUE=$'\001\033[0;34m\002'
+
+  local branch git_part=""
+  branch=$(git branch 2>/dev/null | grep '^\*' | sed 's/\* //')
+  [ -n "$branch" ] && git_part=" (${BLUE}${branch}${RESET})"
+
+  PS1="${GREEN}\u${RESET} ${YELLOW}\w${RESET}${git_part} \$ "
+}
+PROMPT_COMMAND="_update_ps1"
 
 # misc
 alias ll='ls -la'
