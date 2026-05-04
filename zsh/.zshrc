@@ -1,5 +1,19 @@
-#misc
-alias ll="ls -la"
+# misc
+alias ll='ls -la'
+alias la='ls -A'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias grep='grep --color=auto'
+alias mkdir='mkdir -p'
+
+# git
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate'
+alias gco='git checkout'
+alias gb='git branch'
 
 # kubectl
 alias k='kubectl'
