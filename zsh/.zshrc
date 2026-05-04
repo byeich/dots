@@ -1,3 +1,6 @@
+#misc
+alias ll="ls -la"
+
 # kubectl
 alias k='kubectl'
 alias kg='kubectl get'
