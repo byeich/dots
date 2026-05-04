@@ -3,8 +3,7 @@
 command -v kubectl &>/dev/null && source <(kubectl completion bash)
 command -v helm    &>/dev/null && source <(helm completion bash)
 
-
-# prompt: ben ~/dev/dots (main) $
+# prompt
 # $'\001'/'\002' are the bash-safe equivalents of \[ and \] inside variables
 _update_ps1() {
   local RESET=$'\001\033[0m\002'

@@ -5,8 +5,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # case-insensitive
 command -v kubectl &>/dev/null && source <(kubectl completion zsh)
 command -v helm    &>/dev/null && source <(helm completion zsh)
 
-
-# prompt: ben ~/dev/dots (main) %
+# prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats ' (%F{blue}%b%f)'
